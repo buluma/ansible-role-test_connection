@@ -1,5 +1,17 @@
 # Changelog
 
+## [Unreleased](https://github.com/buluma/ansible-role-test_connection/tree/HEAD)
+
+[Full Changelog](https://github.com/buluma/ansible-role-test_connection/compare/1.0.7...HEAD)
+
+**Merged pull requests:**
+
+- Bump buluma/gh-action-auto-merge-dependabot-updates from 1.0.4 to 1.0.5 [\#3](https://github.com/buluma/ansible-role-test_connection/pull/3) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [1.0.7](https://github.com/buluma/ansible-role-test_connection/tree/1.0.7) (2022-04-25)
+
+[Full Changelog](https://github.com/buluma/ansible-role-test_connection/compare/1.0.6...1.0.7)
+
 ## [1.0.6](https://github.com/buluma/ansible-role-test_connection/tree/1.0.6) (2022-03-29)
 
 [Full Changelog](https://github.com/buluma/ansible-role-test_connection/compare/1.0.5...1.0.6)
