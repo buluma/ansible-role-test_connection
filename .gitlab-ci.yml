@@ -20,7 +20,7 @@ molecule:
         tag: "latest"
       - image: "enterpriselinux"
         tag: "8"
-      - image: "docker-debian9-ansible"
+      - image: "docker-debian11-ansible"
         tag: "latest"
       - image: "docker-debian10-ansible"
         tag: "buster"
