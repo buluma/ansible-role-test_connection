@@ -36,6 +36,8 @@
   block:
     - name: Wait_for_connection
       ansible.builtin.wait_for_connection:
+        delay: 60
+        timeout: 180
 
     - name: Save success results wait_for_connection
       ansible.builtin.lineinfile:
