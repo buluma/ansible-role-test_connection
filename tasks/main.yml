@@ -34,7 +34,7 @@
 
 - name: Check if a user can login
   block:
-    - name: wait_for_connection
+    - name: Wait_for_connection
       ansible.builtin.wait_for_connection:
 
     - name: Save success results wait_for_connection
