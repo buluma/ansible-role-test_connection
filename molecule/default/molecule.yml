@@ -15,7 +15,7 @@ driver:
   name: docker
 platforms:
   - name: "testconnection-${image:-docker-centos7-ansible}-${tag:-latest}${TOX_ENVNAME}"
-    image: "${namespace:-buluma}/${image:-docker-molecule-images}:${tag:-latest}"
+    image: "${namespace:-buluma}/${image:-docker-molecule-images}:${platform:-latest}"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
