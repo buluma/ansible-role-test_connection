@@ -14,8 +14,11 @@ lint: |
 driver:
   name: docker
 platforms:
+  # - name: "testconnection-${image:-docker-centos7-ansible}-${tag:-latest}${TOX_ENVNAME}"
+    # image: "${namespace:-buluma}/${image:-docker-centos7-ansible}:${tag:-latest}"
+    # command: ${MOLECULE_DOCKER_COMMAND:-""}
   - name: "testconnection-${image:-docker-centos7-ansible}-${tag:-latest}${TOX_ENVNAME}"
-    image: "${namespace:-buluma}/${image:-docker-centos7-ansible}:${tag:-latest}"
+    image: "buluma/docker-${MOLECULE_DISTRO:-centos7}-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     exposed_ports:
       - 22/tcp
