@@ -1,72 +1,64 @@
 ---
-image: "buluma/github-action-molecule:4.0.9"
+# image: "ghcr.io/mullholland/docker-molecule-shell:latest"
+image: "buluma/github-action-molecule:5.0.0"
+
+# services:
+# - docker:dind
+
+stages:
+  - linting
+  - "default-previous"
+  - "default-current"
 
 variables:
+  # DOCKER_HOST: "tcp://docker:2375"
   PY_COLORS: 1
+  ANSIBLE_FORCE_COLOR: 1
 
-molecule:
-  stage: build
-  allow_failure: true
+linting:
+  tags:
+    - ec2-af-south-1
+  stage: linting
+  variables:
+    COMMAND: "lint"
   script:
-    - molecule converge
-  rules:
-    - if: $CI_COMMIT_REF_NAME == "main"
-  retry: 1
-  parallel:
-    matrix:
-      - image: "alpine-openrc"
-        tag: "latest"
-      - image: "amazonlinux"
-        tag: "latest"
-      - image: "enterpriselinux"
-        tag: "8"
-      - image: "docker-debian11-ansible"
-        tag: "latest"
-      - image: "docker-debian10-ansible"
-        tag: "buster"
-      - image: "docker-opensuse-systemd"
-        tag: "latest"
-      - image: "docker-ubuntu-systemd"
-        tag: "latest"
-      - image: "docker-ubuntu-systemd"
-        tag: "bionic"
-      - image: "docker-ubuntu-systemd"
-        tag: "focal"
+    # - "command=${COMMAND} /opt/molecule.sh"
+    - "ansible-lint ."
+    - "yamllint ."
 
-testing:
-  stage: test
-  needs: []
-  script:
-    - if [ -f tox.ini ] ; then tox ; fi
-    - if [ ! -f tox.ini ] ; then molecule test ; fi
+
+"default-previous":
+  tags:
+    - ec2-af-south-1
+  needs:
+    - "linting"
+  stage: "default-previous"
+  variables:
+    SCENARIO: "default"
+    ANSIBLE: "previous"
   rules:
     - if: $CI_COMMIT_REF_NAME == "testing"
-  retry: 1
   parallel:
     matrix:
-      - image: "alpine-openrc"
-        tag: "latest"
-      - image: "amazonlinux"
-        tag: "latest"
-      - image: "enterpriselinux"
-        tag: "latest"
-      - image: "debian-systemd"
-        tag: "latest"
-      - image: "debian-systemd"
-        tag: "bookworm"
-      - image: "fedora-systemd"
-        tag: "34"
-      - image: "fedora-systemd"
-        tag: "35"
-      - image: "fedora-systemd"
-        tag: "latest"
-      - image: "docker-opensuse-systemd"
-        tag: "latest"
-      - image: "docker-ubuntu-systemd"
-        tag: "latest"
-      - image: "docker-ubuntu-systemd"
-        tag: "bionic"
-      - image: "docker-ubuntu-systemd"
-        tag: "focal"
-      - image: "docker-ubuntu-systemd"
-        tag: "jammy"
+      - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204, centos7, centos-stream8, centos-stream9, ubi8, fedora35, fedora36, amazonlinux]  # yamllint disable-line rule:line-length
+  script:
+    # - "scenario=${SCENARIO} ansible=${ANSIBLE} platform=${PLATFORM} /opt/molecule.sh"
+    - "molecule test"
+
+"default-current":
+  tags:
+    - ec2-af-south-1
+  allow_failure: true
+  needs:
+    - "linting"
+  stage: "default-current"
+  variables:
+    SCENARIO: "default"
+    ANSIBLE: "current"
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "master"
+  parallel:
+    matrix:
+      - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204, centos7, centos-stream8, centos-stream9, ubi8, fedora35, fedora36, amazonlinux]  # yamllint disable-line rule:line-length
+  script:
+    - molecule test
