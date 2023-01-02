@@ -3,7 +3,7 @@ image: "ghcr.io/buluma/docker-molecule-shell:latest"
 # image: "buluma/github-action-molecule:5.0.0"
 
 services:
-- docker:dind
+  - docker:dind
 
 stages:
   - linting
