@@ -5,6 +5,7 @@
 exclude_paths:
   - ./meta/preferences.yml
   - ./molecule/local/prepare.yml
+  - ./molecule/local/molecule.yml
   - ./molecule/local/converge.yml
   - ./molecule/local/verify.yml
   - ./molecule/local/collections.yml
