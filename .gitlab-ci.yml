@@ -1,9 +1,9 @@
 ---
-image: "ghcr.io/buluma/docker-molecule-shell:latest"
-# image: "buluma/github-action-molecule:5.0.0"
+# image: "ghcr.io/mullholland/docker-molecule-shell:latest"
+image: "buluma/github-action-molecule:5.0.0"
 
-services:
-  - docker:dind
+# services:
+# - docker:dind
 
 stages:
   - linting
@@ -11,20 +11,20 @@ stages:
   - "default-current"
 
 variables:
-  DOCKER_HOST: "tcp://docker:2376"
+  # DOCKER_HOST: "tcp://docker:2375"
   PY_COLORS: 1
   ANSIBLE_FORCE_COLOR: 1
 
 linting:
   tags:
-    - ec2-af-south-1-docker
+    - ec2-af-south-1
   stage: linting
   variables:
     COMMAND: "lint"
   script:
-    - "command=${COMMAND} /opt/molecule.sh"
-    # - "ansible-lint ."
-    # - "yamllint ."
+    # - "command=${COMMAND} /opt/molecule.sh"
+    - "ansible-lint ."
+    - "yamllint ."
 
 
 "default-previous":
@@ -42,12 +42,12 @@ linting:
     matrix:
       - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204, centos7, centos-stream8, centos-stream9, ubi8, fedora35, fedora36, amazonlinux]  # yamllint disable-line rule:line-length
   script:
-    - "scenario=${SCENARIO} ansible=${ANSIBLE} platform=${PLATFORM} /opt/molecule.sh"
-    # - "molecule test"
+    # - "scenario=${SCENARIO} ansible=${ANSIBLE} platform=${PLATFORM} /opt/molecule.sh"
+    - "molecule test"
 
 "default-current":
   tags:
-    - ec2-af-south-1-docker
+    - ec2-af-south-1
   allow_failure: true
   needs:
     - "linting"
@@ -61,5 +61,4 @@ linting:
     matrix:
       - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204, centos7, centos-stream8, centos-stream9, ubi8, fedora35, fedora36, amazonlinux]  # yamllint disable-line rule:line-length
   script:
-    # - molecule test
-    - "scenario=${SCENARIO} ansible=${ANSIBLE} platform=${PLATFORM} /opt/molecule.sh"
+    - molecule test
