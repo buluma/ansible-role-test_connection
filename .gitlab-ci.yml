@@ -1,6 +1,6 @@
 ---
-# image: "ghcr.io/mullholland/docker-molecule-shell:latest"
-image: "buluma/github-action-molecule:5.0.0"
+image: "ghcr.io/buluma/docker-molecule-shell:latest"
+# image: "buluma/github-action-molecule:5.0.0"
 
 # services:
 # - docker:dind
@@ -11,7 +11,7 @@ stages:
   - "default-current"
 
 variables:
-  # DOCKER_HOST: "tcp://docker:2375"
+  DOCKER_HOST: "tcp://docker:2375"
   PY_COLORS: 1
   ANSIBLE_FORCE_COLOR: 1
 
@@ -22,9 +22,9 @@ linting:
   variables:
     COMMAND: "lint"
   script:
-    # - "command=${COMMAND} /opt/molecule.sh"
-    - "ansible-lint ."
-    - "yamllint ."
+    - "command=${COMMAND} /opt/molecule.sh"
+    # - "ansible-lint ."
+    # - "yamllint ."
 
 
 "default-previous":
@@ -42,8 +42,8 @@ linting:
     matrix:
       - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204, centos7, centos-stream8, centos-stream9, ubi8, fedora35, fedora36, amazonlinux]  # yamllint disable-line rule:line-length
   script:
-    # - "scenario=${SCENARIO} ansible=${ANSIBLE} platform=${PLATFORM} /opt/molecule.sh"
-    - "molecule test"
+    - "scenario=${SCENARIO} ansible=${ANSIBLE} platform=${PLATFORM} /opt/molecule.sh"
+    # - "molecule test"
 
 "default-current":
   tags:
@@ -56,9 +56,10 @@ linting:
     SCENARIO: "default"
     ANSIBLE: "current"
   rules:
-    - if: $CI_COMMIT_REF_NAME == "main"
+    - if: $CI_COMMIT_REF_NAME == "master"
   parallel:
     matrix:
       - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204, centos7, centos-stream8, centos-stream9, ubi8, fedora35, fedora36, amazonlinux]  # yamllint disable-line rule:line-length
   script:
-    - molecule test
+    # - molecule test
+    - "scenario=${SCENARIO} ansible=${ANSIBLE} platform=${PLATFORM} /opt/molecule.sh"
