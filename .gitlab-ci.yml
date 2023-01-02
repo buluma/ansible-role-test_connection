@@ -17,7 +17,7 @@ variables:
 
 linting:
   tags:
-    - ec2-af-south-1
+    - ec2-af-south-1-docker
   stage: linting
   variables:
     COMMAND: "lint"
@@ -47,7 +47,7 @@ linting:
 
 "default-current":
   tags:
-    - ec2-af-south-1
+    - ec2-af-south-1-docker
   allow_failure: true
   needs:
     - "linting"
