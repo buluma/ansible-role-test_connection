@@ -56,7 +56,7 @@ linting:
     SCENARIO: "default"
     ANSIBLE: "current"
   rules:
-    - if: $CI_COMMIT_REF_NAME == "master"
+    - if: $CI_COMMIT_REF_NAME == "main"
   parallel:
     matrix:
       - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204, centos7, centos-stream8, centos-stream9, ubi8, fedora35, fedora36, amazonlinux]  # yamllint disable-line rule:line-length
