@@ -5,4 +5,4 @@
 repository:
   description: Test connection possibilities to your system.
   homepage: https://buluma.github.io/
-  topics: testconnection, ansible, molecule, tox, playbook, hacktoberfest
+  topics: testconnection, ansible, molecule, tox, playbook
