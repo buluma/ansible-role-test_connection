@@ -1,5 +1,14 @@
 # Changelog
 
+## [Unreleased](https://github.com/buluma/ansible-role-test_connection/tree/HEAD)
+
+[Full Changelog](https://github.com/buluma/ansible-role-test_connection/compare/1.0.8...HEAD)
+
+**Closed issues:**
+
+- Update buluma/todo-to-issue-action@v1.0.1 @buluma [\#10](https://github.com/buluma/ansible-role-test_connection/issues/10)
+- Update action [\#9](https://github.com/buluma/ansible-role-test_connection/issues/9)
+
 ## [1.0.8](https://github.com/buluma/ansible-role-test_connection/tree/1.0.8) (2022-07-08)
 
 [Full Changelog](https://github.com/buluma/ansible-role-test_connection/compare/1.0.7...1.0.8)
