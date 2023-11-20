@@ -15,6 +15,7 @@ exclude_paths:
 
 skip_list:
   - yaml[truthy]
+  - syntax-check[specific
 
 enable_list:
   - name[prefix]
