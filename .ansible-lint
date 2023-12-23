@@ -15,7 +15,6 @@ exclude_paths:
 
 skip_list:
   - yaml[truthy]
-  - role-name
 
 enable_list:
   - name[prefix]
