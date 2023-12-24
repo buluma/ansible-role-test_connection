@@ -1,10 +1,10 @@
-# [Ansible role test_connection](#test_connection)
+# Ansible role [test_connection](https://galaxy.ansible.com/ui/standalone/roles/buluma/test_connection/documentation)
 
 Test connection possibilities to your system.
 
-|GitHub|Version|Issues|Pull Requests|
-|------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-test_connection/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-test_connection/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-test_connection.svg)](https://github.com/buluma/ansible-role-test_connection/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-test_connection.svg)](https://github.com/buluma/ansible-role-test_connection/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-test_connection.svg)](https://github.com/buluma/ansible-role-test_connection/pulls/)|
+|GitHub|Version|Issues|Pull Requests|Downloads|
+|------|-------|------|-------------|---------|
+|[![github](https://github.com/buluma/ansible-role-test_connection/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-test_connection/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-test_connection.svg)](https://github.com/buluma/ansible-role-test_connection/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-test_connection.svg)](https://github.com/buluma/ansible-role-test_connection/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-test_connection.svg)](https://github.com/buluma/ansible-role-test_connection/pulls/)|[![Ansible Role](https://img.shields.io/ansible/role/d/buluma/test_connection)](https://galaxy.ansible.com/ui/standalone/roles/buluma/test_connection/documentation)|
 
 ## [Example Playbook](#example-playbook)
 
