@@ -6,6 +6,7 @@
 
 **Closed issues:**
 
+- Update buluma/todo-to-issue-action@v1.0.1 @buluma [\#13](https://github.com/buluma/ansible-role-test_connection/issues/13)
 - Update buluma/todo-to-issue-action@v1.0.1 @buluma [\#10](https://github.com/buluma/ansible-role-test_connection/issues/10)
 - Update action [\#9](https://github.com/buluma/ansible-role-test_connection/issues/9)
 
