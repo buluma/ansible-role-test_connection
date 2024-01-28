@@ -4,6 +4,7 @@
 #
 exclude_paths:
   - meta/preferences.yml
+  - molecule
   - molecule/default/prepare.yml
   - molecule/default/converge.yml
   - molecule/default/verify.yml
