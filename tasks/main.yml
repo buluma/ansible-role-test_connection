@@ -3,7 +3,7 @@
 
 - name: Import assert.yml
   ansible.builtin.import_tasks: assert.yml
-  run_once: yes
+  run_once: true
   delegate_to: localhost
 
 - name: Check if the ssh tcp port is open
@@ -20,7 +20,7 @@
       ansible.builtin.lineinfile:
         path: "{{ test_connection_report_directory }}/connection_succeeded.txt"
         line: "{{ ansible_ssh_host | default(ansible_host | default(inventory_hostname)) }}"
-        create: yes
+        create: true
         mode: "0644"
       delegate_to: "{{ test_connection_report_host }}"
   rescue:
@@ -28,7 +28,7 @@
       ansible.builtin.lineinfile:
         path: "{{ test_connection_report_directory }}/connection_failed.txt"
         line: "{{ ansible_ssh_host | default(ansible_host | default(inventory_hostname)) }}"
-        create: yes
+        create: true
         mode: "0644"
       delegate_to: "{{ test_connection_report_host }}"
 
@@ -45,7 +45,7 @@
       ansible.builtin.lineinfile:
         path: "{{ test_connection_report_directory }}/wait_for_connection_succeeded.txt"
         line: "{{ ansible_ssh_host | default(ansible_host | default(inventory_hostname)) }}"
-        create: yes
+        create: true
         mode: "0644"
       delegate_to: "{{ test_connection_report_host }}"
   rescue:
@@ -53,7 +53,7 @@
       ansible.builtin.lineinfile:
         path: "{{ test_connection_report_directory }}/wait_for_connection_failed.txt"
         line: "{{ ansible_ssh_host | default(ansible_host | default(inventory_hostname)) }}"
-        create: yes
+        create: true
         mode: "0644"
       delegate_to: "{{ test_connection_report_host }}"
 
@@ -61,14 +61,14 @@
   block:
     - name: Ping with become
       ansible.builtin.ping:
-      become: yes
+      become: true
       become_user: root
 
     - name: Save success results ping
       ansible.builtin.lineinfile:
         path: "{{ test_connection_report_directory }}/become_succeeded.txt"
         line: "{{ ansible_ssh_host | default(ansible_host | default(inventory_hostname)) }}"
-        create: yes
+        create: true
         mode: "0644"
       delegate_to: "{{ test_connection_report_host }}"
   rescue:
@@ -76,6 +76,6 @@
       ansible.builtin.lineinfile:
         path: "{{ test_connection_report_directory }}/become_failed.txt"
         line: "{{ ansible_ssh_host | default(ansible_host | default(inventory_hostname)) }}"
-        create: yes
+        create: true
         mode: "0644"
       delegate_to: "{{ test_connection_report_host }}"
