@@ -4,4 +4,4 @@
   gather_facts: no
 
   roles:
-    - role: ansible-role-test_connection
+    - role: buluma.test_connection
