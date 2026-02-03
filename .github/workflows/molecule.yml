@@ -8,10 +8,10 @@ name: Ansible Molecule
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
   schedule:
     - cron: '39 20 20 * *'
 
