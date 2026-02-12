@@ -8,12 +8,20 @@ name: Ansible Molecule
 on:
   push:
     branches:
+      - master
       - main
   pull_request:
     branches:
+      - master
       - main
   schedule:
     - cron: '39 20 20 * *'
+
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
 
 jobs:
   lint:
@@ -27,7 +35,6 @@ jobs:
   molecule:
     needs:
       - lint
-    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -36,7 +43,7 @@ jobs:
           - image: "docker-molecule-images"
             tag: "latest"
           - image: "docker-molecule-images"
-            tag: "1"
+            tag: "amazonlinux2023"
           - image: "docker-molecule-images"
             tag: "amazonlinux1"
           - image: "enterpriselinux"
