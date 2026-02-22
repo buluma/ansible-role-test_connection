@@ -1,2 +1,15 @@
 ---
 tox_parallel: yes
+molecule_matrix_include:
+  - image: docker-molecule-images
+    tag: kalilinux
+  - image: docker-molecule-images
+    tag: oraclelinux9
+  - image: docker-molecule-images
+    tag: rockylinux9
+  - image: docker-molecule-images
+    tag: almalinux9
+  - image: docker-molecule-images
+    tag: centos-stream9
+  - image: docker-molecule-images
+    tag: archlinux
