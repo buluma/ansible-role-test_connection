@@ -31,6 +31,12 @@ galaxy_info:
     - name: Kali
       versions:
         - all
+    - name: RockyLinux
+      versions:
+        - all
+    - name: AlmaLinux
+      versions:
+        - all
   galaxy_tags:
     - testconnection
 dependencies: []
