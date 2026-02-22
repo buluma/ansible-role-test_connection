@@ -31,10 +31,19 @@ galaxy_info:
     - name: Kali
       versions:
         - all
+    - name: OracleLinux
+      versions:
+        - all
     - name: RockyLinux
       versions:
         - all
     - name: AlmaLinux
+      versions:
+        - all
+    - name: CentOS
+      versions:
+        - all
+    - name: Archlinux
       versions:
         - all
   galaxy_tags:

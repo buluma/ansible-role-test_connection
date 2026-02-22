@@ -63,11 +63,19 @@ jobs:
           - image: "docker-molecule-images"
             tag: "kalilinux"
           - image: "docker-molecule-images"
+            tag: "oraclelinux9"
+          - image: "docker-molecule-images"
+            tag: "oraclelinux_latest"
+          - image: "docker-molecule-images"
             tag: "rockylinux9"
           - image: "docker-molecule-images"
             tag: "almalinux9"
           - image: "docker-molecule-images"
             tag: "almalinux10"
+          - image: "docker-molecule-images"
+            tag: "centos-stream9"
+          - image: "docker-molecule-images"
+            tag: "archlinux"
     steps:
       - name: checkout
         uses: actions/checkout@v6
