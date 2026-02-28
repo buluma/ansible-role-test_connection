@@ -4,6 +4,11 @@
 
 [Full Changelog](https://github.com/buluma/ansible-role-test_connection/compare/24.3.31...HEAD)
 
+**Closed issues:**
+
+- Update action [\#12](https://github.com/buluma/ansible-role-test_connection/issues/12)
+- rebuild action [\#11](https://github.com/buluma/ansible-role-test_connection/issues/11)
+
 **Merged pull requests:**
 
 - Bump docker/login-action from 3.2.0 to 3.3.0 [\#25](https://github.com/buluma/ansible-role-test_connection/pull/25) ([dependabot[bot]](https://github.com/apps/dependabot))
