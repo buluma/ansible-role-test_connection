@@ -35,32 +35,43 @@ jobs:
   molecule:
     needs:
       - lint
-    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         distro:
-          - image: "alpine"
-            tag: "latest"
-          - image: "amazonlinux"
-            tag: "latest"
+          - image: "docker-molecule-images"
+            tag: "alpine-openrc_latest"
+          - image: "docker-molecule-images"
+            tag: "amazonlinux2023"
           - image: "enterpriselinux"
             tag: "latest"
-          - image: "debian"
-            tag: "latest"
-          - image: "debian"
+          - image: "docker-molecule-images"
+            tag: "debian_latest"
+          - image: "docker-molecule-images"
             tag: "bookworm"
-          - image: "debian"
-            tag: "bullseye"
-          - image: "fedora"
-            tag: "latest"
-          - image: "opensuse"
+          - image: "docker-molecule-images"
+            tag: "fedora_latest"
+          - image: "docker-molecule-images"
+            tag: "fedora45"
+          - image: "docker-molecule-images"
             tag: "opensuse-tumbleweed"
-          - image: "ubuntu"
-            tag: "latest"
-          - image: "ubuntu"
+          - image: "docker-molecule-images"
+            tag: "ubuntu_latest"
+          - image: "docker-molecule-images"
             tag: "jammy"
+          - image: "docker-molecule-images"
+            tag: "kalilinux"
+          - image: "docker-molecule-images"
+            tag: "oraclelinux9"
+          - image: "docker-molecule-images"
+            tag: "rockylinux9"
+          - image: "docker-molecule-images"
+            tag: "almalinux9"
+          - image: "docker-molecule-images"
+            tag: "centos-stream9"
+          - image: "docker-molecule-images"
+            tag: "archlinux"
     steps:
       - name: checkout
         uses: actions/checkout@v6
