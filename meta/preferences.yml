@@ -1,15 +1,20 @@
 ---
-tox_parallel: yes
-molecule_matrix_include:
-  - image: docker-molecule-images
-    tag: kalilinux
-  - image: docker-molecule-images
-    tag: oraclelinux9
-  - image: docker-molecule-images
-    tag: rockylinux9
-  - image: docker-molecule-images
-    tag: almalinux9
-  - image: docker-molecule-images
-    tag: centos-stream9
-  - image: docker-molecule-images
-    tag: archlinux
+# Pins the CI platform/version matrix for this role. Without this, ansible-generator
+# falls back to default_platforms and silently discards these choices on regenerate.
+platforms:
+  - name: EL
+    versions:
+      - "10"
+      - "9"
+  - name: Debian
+    versions:
+      - all
+  - name: Fedora
+    versions:
+      # Excludes 45: it ships Python 3.15.0b3, whose dataclasses module
+      # dropped _is_type, breaking ansible-core's AnsiballZ module wrapper.
+      - "44"
+      - "43"
+  - name: Ubuntu
+    versions:
+      - all
